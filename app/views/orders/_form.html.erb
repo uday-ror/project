@@ -1,0 +1,52 @@
+
+<%= form_with model: @order do |form| %>
+    <div class="card">
+      <div class="card-body">
+       <div class="mb-3"> 
+         <h3><strong>  <%= form.label :total %></strong></h3><br>
+         <span class="badge bg-primary rounded-pill">
+         <h3> <%=total_price(current_user.items)%></h3>
+         </span><br>
+       </div>
+       
+        <div class="mb-3">
+          <%= form.label :address %>
+          <%= form.text_field :address %>
+        </div><br>
+
+        <div class="mb-3">
+            <%= form.label :permanent_address %>
+            <%= form.text_field :permanent_address, required: true %>
+        </div><br>
+
+        <div class="mb-3">
+            <%= form.label :mobile_no %>
+            <%= form.number_field :mobile_no, required: true %>
+            <% @order.errors.full_messages_for(:mobile_no).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div><br>
+
+        <div class="mb-3">
+            <%= form.label :pincode %>
+            <%= form.number_field :pincode, required: true %>
+            <% @order.errors.full_messages_for(:pincode).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+        </div><br>
+          
+         <%= form.hidden_field :total, value: total_price(current_user.items)%>
+         <%= form.hidden_field :user_id, value: current_user.id%>
+
+        <div class="mb-3">
+            <%= form.submit "Create",class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+<% end %><br>
+  
+<div class="col-lg-2 offset-lg-10">
+  <%= link_to 'Back', :back, class:"btn btn-outline-secondary" %>
+</div> <br>
+
+

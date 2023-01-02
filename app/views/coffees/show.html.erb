@@ -1,0 +1,42 @@
+
+
+  <div class="card mb-2" style="max-width: 1000px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img class="card-img1-top", src = "<%= (url_for(@coffee.image)) %>">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="col-lg-4 offset-lg-3">
+          <h4 class="card-title"><%= @coffee.name%></h4>
+          <br>
+          <div class="card-title"><h4>Price - <%= @coffee.amount %></h4></div><br>
+        </div>
+
+        <div class="card-text">
+          <strong>Description -</strong><br>
+          <p> <%= @coffee.detail %>.</p>
+        </div><br>      
+        <div class="col-lg-4 offset-lg-4">
+          <div class='row d-flex justify-content-center'>                      
+           <div class="btn btn-sm btn-success ml-2">
+            <%= button_to 'Add to cart +', add_user_card_path(@coffee.id), class: 'btn btn-sm btn-success  d-grid gap-2 col-6 mx-auto' %>
+          </div>
+          </div><br>
+          
+        </div>  
+          <p class="card-text"><strong>Last updated <%= @coffee.created_at.strftime('%d %b %Y %H:%M %p') %> ago</strong></p>
+           <div id="feature-bullets" class="a-section a-spacing-medium a-spacing-top-small">  
+              <ul class="a-unordered-list a-vertical a-spacing-mini"> 
+               <li><span class="a-list-item"> Ground coffee is added to a brew basket and placed in an automatic coffee machine for this brewing style. Gravity is used to pass water through the grounds, resulting in a traditional cup of coffee.</span></li>
+               <li><span class="a-list-item">This brewing style is achieved by pouring boiling water slowly through coffee grounds as they sit in a filter basket. The coffee then drips into a single cup, resulting in a potent brew.</span></li>
+               <li><span class="a-list-item">For cold brew, coarsely ground coffee is placed in room temperature water and allowed to steep for an extended period of time. This results in a less bitter, highly caffeinated brew. </span></li>
+               <li><span class="a-list-item"> The red eye's purpose is to add a boost of caffeine to your standard cup of coffee.</span></li>
+              </ul> 
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

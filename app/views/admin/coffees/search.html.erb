@@ -1,0 +1,29 @@
+
+
+<h1>search result</h1>
+
+    <table class="table">
+     <% @users.each do |user| %>
+     <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">User mail</th>
+          <th scope="col">User order</th>
+          <th scope="col">total orders count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">*</th>
+          <td><%= user.email %></td>
+          <%byebug%>
+          <td><%= user.orders %></td>
+          <td><%= link_to 'order items', orders_path(user: user.id) %></td>
+          <td><%= user.orders.count %></td>
+        </tr>
+      </tbody>
+     <%end%>
+ 
+ </table>
+
+

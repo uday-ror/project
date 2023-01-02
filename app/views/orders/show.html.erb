@@ -1,0 +1,124 @@
+<div class="card text-center">
+  <div class="card-header">
+   <h3>Order information</h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <div class="container">
+        <div class="row space-sm">
+          <div class="col-lg-6 ">
+            <strong>Order  time </strong>
+          </div>
+          <div class="col-lg-6">
+            <%= time_ago_in_words(@order.created_at, include_seconds: true)  %>
+          </div>
+        </div>  
+      </div>
+    </h5>
+    <p class="card-text">
+      <div class="row space">
+        <h5>Order details</h5>
+      </div>
+      <div class="d-none d-lg-block">
+        <div class="row">
+          <div class="col-lg-4">
+            <strong>Coffee_Name</strong>
+          </div>
+          <div class="col-lg-3">
+            <strong>Coffee price </strong>
+          </div>
+          <div class="col-lg-2">
+            <strong>Quantity</strong>
+          </div>
+          <div class="col-lg-2">
+            <strong>Subtotal</strong>
+          </div>
+        </div>
+      </div>  
+      </p>
+      <% sum_all = 0 %>
+      <% @order.items.each do |item| %>
+        <div class="row space-sm">
+          <div class="col-lg-4">
+            <%= item.coffee.name %>
+<!--             #belongs to association through singular coffee return -->
+          </div>
+          <div class="col-lg-3">
+            <%= item.coffee.amount %>
+          </div>
+          <div class="col-lg-2">
+            <%= item.quantity %>
+          </div>
+          <div class="col-lg-2">
+            <span class="badge bg-primary rounded-pill">Rs
+              <%= sub_total = (item.coffee.amount).to_i * item.quantity %>
+            </span>
+            <% sum_all += sub_total %>
+          </div>
+        </div>
+      <% end %>
+   </div>
+      <p class="card-text">
+      <div class="row space">
+        <h5>Delivery  details</h5>
+      </div>
+      <div class="d-none d-lg-block">
+        <div class="row">
+          <div class="col-lg-4">
+            <strong>Address</strong>
+          </div>
+          <div class="col-lg-3">
+            <strong>Permanent Address </strong>
+          </div>
+          <div class="col-lg-2">
+            <strong>Mobile Number</strong>
+          </div>
+          <div class="col-lg-2">
+            <strong>Pincode</strong>
+          </div>
+        </div>
+      </p>
+        <div class="row space-sm">
+          <div class="col-lg-4">
+            <%= @order.address %>
+          </div>
+          <div class="col-lg-3">
+            <%= @order.permanent_address %>
+          </div>
+          <div class="col-lg-2">
+            <%= @order.mobile_no %>
+          </div>
+           <div class="col-lg-2">
+            <%= @order.pincode %>
+          </div>
+        </div>  
+    <div class="card-footer text-muted">
+    <div class="col-lg-12">
+      <div class="row space">
+        <h3>Billing information</h3>
+      </div>
+      <div class="row">
+        <div class="container">
+          <div class="row space-sm">
+            <div class="col-lg-6">
+              <strong>Total Price</strong>
+            </div>
+            <div class="col-6">
+               <span class="badge bg-primary rounded-pill">Rs
+                  <%= sum_all %>
+               </span> 
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 offset-lg-2">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <% if @order.payment.nil? %>
+      <%= link_to 'Buy Order ', new_payment_path(order_id: @order.id),  class:"btn btn-info"%>
+    <%end%>
+    </div>
+  </div><br>
+</div>
+<%= link_to 'Back', :back, class:"btn btn-secondary" %><br>

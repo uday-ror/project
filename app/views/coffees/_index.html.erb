@@ -1,0 +1,25 @@
+    
+<div class="container p-5">
+  <div class="row">
+    <% @coffees.each do |coffee| %>
+      <div class="col-md-4">
+        <div class="card">  
+          <%= image_tag coffee.image, class: 'card-img-index' %>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h5><%= link_to coffee.name, coffee_path(coffee) %></h5>
+          </div>
+          <div class="card-title"><h5>Price - <%= coffee.amount %></h5></div><br>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class='row d-flex justify-content-center'>
+          <%= button_to 'Add to cart +', add_user_card_path(coffee), class: 'btn btn-sm btn-outline-primary mt-2'  %>
+          <b class='mt-3 ml-3'></b>
+        </div>
+      </div>
+    <% end %>  
+  </div>
+<div class="col-lg-4 offset-lg-5">   
+  <%= paginate @coffees %>
+</div> 

@@ -1,0 +1,28 @@
+<div class='col-md-6 d-flex justify-content-end'>
+<h5>Payment method</h5>
+
+</div>
+<table class="table">
+  <% @payments.each do |payment| %>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User mail</th>
+      <th scope="col">Payment type</th>
+      <th scope="col">Card Number</th>
+      <th scope="col">Cvc</th>
+      <th scope="col">amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">*</th>
+      <td><%= payment.user.email %></td>
+      <td><%= link_to payment.payment_type, payment_path(payment) %></td>
+      <td><%= payment.card_number%></td>
+      <td><%= payment.cvc%></td>
+      <td><%= payment.order.total %></td>
+    </tr>
+    </tbody>
+<% end %>
+</table>

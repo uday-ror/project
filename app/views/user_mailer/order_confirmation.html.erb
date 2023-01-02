@@ -1,0 +1,33 @@
+<div class="col-lg-10 offset-1 space">  
+  <p>
+    Hi Dear 
+  </p>
+  <p>
+    
+    <%= @user.email %>,
+  </p>
+
+Order Details:
+--------------------------
+<% u = @user.orders.last %>
+ <%= u.address %>
+ <%#= @user.order %>
+ <%= u.permanent_address %>
+ <%= u.mobile_no %>
+
+  <p>
+    Thank you so much for order with Coffee shop!
+  </p>
+  <p>
+    Your order is being prepared and packed with loving care. By the way, you have great taste; this eye cream is our .
+  </p>
+  <p>
+    Let us know if we can do anything to make your experience better!
+  </p>
+  <p>
+    Thanks again,
+  </p>
+  <p>
+    The Coffee Team
+  </p>
+</div>

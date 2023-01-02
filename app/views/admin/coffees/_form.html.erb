@@ -1,0 +1,38 @@
+<div class="card text-center">
+  <div class="card-header">
+
+    
+        <%= form_for [:admin, @coffee] do |form| %>
+          <div>
+            <%= form.label :name %><br>
+            <%= form.cktext_area :name, required: true %>
+            <% @coffee.errors.full_messages_for(:name).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
+
+          <div>
+            <%= form.label :amount %><br>
+            <%= form.text_area :amount, required: true %><br>
+            <% @coffee.errors.full_messages_for(:amount).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
+
+          <div>
+            <%= form.label :Detail %><br> 
+            <%= form.cktext_area :detail %>
+          </div>
+
+          <div>
+            <%= form.label :image %><br>
+            <%= form.file_field :image%>
+          </div><br>
+
+          <div>
+            <%= form.submit "Create" %>
+          </div>
+        <% end %>
+      
+  </div>
+</div>

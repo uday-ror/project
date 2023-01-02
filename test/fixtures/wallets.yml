@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pauyment_id: 1
+  available_amount: 1.5
+  order_id: 1
+
+two:
+  pauyment_id: 1
+  available_amount: 1.5
+  order_id: 1

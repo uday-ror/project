@@ -1,0 +1,43 @@
+<%= form_with model: payment do |form| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3"><%= form.radio_button :payment_type, "credit card" %>
+        <%= form.label :payment_type, "credit" %>
+        <%= form.radio_button :payment_type, "debit card" %>
+        <%= form.label :payment_type, "debit" %>
+      </div><br>
+
+      <div class="mb-3">
+        <%= form.label :card_number %><br>
+        <%= form.number_field :card_number, required: true %>
+        <% @payment.errors.full_messages_for(:card_number).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+      </div><br>
+
+      <div class="mb-3">
+        <%= form.label :cvc %><br>
+        <%= form.number_field :cvc, required: true %><br>
+        <% @payment.errors.full_messages_for(:cvc).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+      </div><br>
+
+      <div class="mb-3">
+        <%= form.label :date %><br>
+        <%= form.date_field :cc_exp_month, required: true%>
+      </div><br>
+      
+      <div class="mb-3">
+      <%= form.hidden_field :order_id, value: params[:order_id] %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      </div><br>
+
+      <div class="mb-3">
+        <%= form.submit "Create" %>
+      </div>
+    </div>
+  </div>  
+<% end %>
+
+  

@@ -1,0 +1,22 @@
+<h1>Detail of payment</h1>
+
+<div class="mb-3 row">
+  <div class='card mb-5 border-0 shadow fav_cards_items'>
+    <div class='card-body'>
+
+		  <label for="staticpaymenttype" class="col-sm-2 col-form-label">User email -</label><%= @payment.user.email %><br>
+
+			<label for="paymentcvc" class="col-sm-2 col-form-label">Time -</label>
+		              <%= time_ago_in_words(@payment.created_at, include_seconds: true)%><br>
+
+		  <label for="staticpaymenttype" class="col-sm-2 col-form-label">Payment Type -</label><%= @payment.payment_type%><br>
+			
+			<label for="paymentcardnumber" class="col-sm-2 col-form-label">Card Number -</label><%= @payment.card_number%><br>
+			<label for="paymentcvc" class="col-sm-2 col-form-label">CVC -</label><%= @payment.cvc%><br>
+
+			<label for="paymentcvc" class="col-sm-2 col-form-label">Date -</label><%= @payment.cc_exp_month%><br>
+
+		  <label for="staticpaymenttype" class="col-sm-2 col-form-label">Total paid amount -</label><%= @payment.order.total %><br>
+  	</div>
+	</div>
+</div>

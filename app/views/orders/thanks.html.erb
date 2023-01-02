@@ -1,0 +1,43 @@
+<div class="col-lg-10 offset-1 space">
+  <h2>Thank you for Ordering! </h2>
+</div><br>
+
+<div class="col-lg-10 offset-1 space">  
+  <p>
+    Hi Dear 
+  </p>
+  <p>
+    <%= current_user.email %>,
+  </p>
+  <p>
+    Thank you so much for order with Coffee shop!
+  </p>
+  <p>
+    Your order is being prepared and packed with loving care. By the way, you have great taste; this eye cream is our .
+  </p>
+  <p>
+    Let us know if we can do anything to make your experience better!
+  </p>
+  <p>
+    Thanks again,
+  </p>
+  <p>
+    The Coffee Team
+  </p>
+</div>
+
+<div class="col-lg-10 offset-1 space">
+  <h5><%= link_to 'view order history', orders_path%></h5>
+</div><br>
+
+<div class="col-lg-10 offset-1 space">
+   <h5><%= link_to 'view payment history', payments_path%></h5>
+</div><br>
+
+<div class="col-lg-10 offset-1 space">
+  <h5><%= link_to 'Return to dashboard', root_path %></h5>
+</div>
+
+<div class="col-lg-4 offset-lg-10">   
+  <%= button_to "Back", root_path, :class => 'btn btn-success mt-3 ml-1' , :method => :get %>
+</div><br>  
